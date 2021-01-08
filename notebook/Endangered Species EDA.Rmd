@@ -11,21 +11,35 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Look at the data and finish the cleaning
 
+```{r}
+library(tidyverse)
+library(leaflet)
+```
+
 ```{r ecos file}
-ecos_species <- read.csv("../data/ec")
+### Read the file
+ecos_species <- read.csv("../data/ecos_animal_us_ca_clean.csv")
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ```{r}
+### remove the column "status_code"
+ecos_species <- select(ecos_species, -"status_code")
+```
 
+### Test map the polygons
+
+```{r}
+### Use only one row
+test_akekee <- ecos_species %>% 
+  filter(common_name == "Akekee")
+```
+
+```{r}
+m <- leaflet()
+```
+
+
+```{r}
+leaflet() %>% addTiles() %>% addPolygons(data=test_akekee)
 ```
 
