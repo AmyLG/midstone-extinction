@@ -14,6 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(leaflet)
+### libraries needed to read the geojson file
+library(sp)
+library(rgdal)
 ```
 
 ```{r ecos file}
@@ -26,20 +29,86 @@ ecos_species <- read.csv("../data/ecos_animal_us_ca_clean.csv")
 ecos_species <- select(ecos_species, -"status_code")
 ```
 
+### Need to clean polygon data
+
+```{r}
+### 5 locations are missing change blank for "None"
+ecos_species$location[ecos_species$location  == ""]  <-  "None"
+```
+
+```{r}
+### And I decided to drop them...
+ecos_species2<-subset(ecos_species, location!="None")
+```
+
+
+```{r}
+### check the number of lat long per polygon POLYGON((lng1 lat1, lng2 lat2, etc.))
+max(str_count(ecos_species2$location, ","))
+```
+
+```{r}
+### There is 5 groups, separate the groups in columns
+ecos_species2 <- ecos_species2 %>%
+     separate(
+     location,
+     c('loc1', 'loc2', 'loc3', 'loc4', 'loc5'),
+     sep = ",",
+     remove = FALSE,
+     convert = FALSE
+     )
+```
+
+```{r}
+# remove POLYGON(( in loc1 column
+ecos_species2$loc1 <- gsub("^.{0,9}", "", ecos_species2$loc1)
+```
+
+```{r}
+#remove parenthesis at the end of loc5
+ecos_species2$loc5 <-gsub('.{2}$', "", ecos_species2$loc5)
+```
+
+```{r}
+### It can be cleaned to work as above but I decided to convert the polygones data as geojson data in notebook (midstone_cleaning_03.ipynb)
+### attention: Not done cleaning this data!!!
+```
+
+
 ### Test map the polygons
 
 ```{r}
-### Use only one row
-test_akekee <- ecos_species %>% 
-  filter(common_name == "Akekee")
+# And example how the polygones coordiantes could work but it necesitate extra cleaning 
+
+lng=c(-88.2001819788612,-88.2001819788612,-82.1454910033833,-82.1454910033833,-88.2001819788612)	
+lat=c(41.1621947025267,47.8207069935056,47.8207069935056,41.1621947025267,41.1621947025267)
+
+leaflet() %>% addTiles() %>%
+  addPolygons(lng, lat, color = "purple", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "purple")
+
 ```
 
+### Different method by converting the data as polygon datas so it can be used on leaflet (notebook = midstone_cleaning_03.ipynb)
+
 ```{r}
-m <- leaflet()
+### Read the geospatial files using rgdal
+ecos_data <- rgdal::readOGR("../data/ecos_us_ca_geo.geojson/")
 ```
 
+```{r akekee test}
+leaflet(ecos_data[ecos_data$common_nam == "Akekee",]) %>%  addTiles() %>%
+  addPolygons(color = "purple", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "purple")
+```
+
+```{r polar bear test}
+leaflet(ecos_data[ecos_data$common_nam == "Polar bear",]) %>%  addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") %>%
+  addPolygons(color = "red", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "red")
+```
+
+### Test image url
 
 ```{r}
-leaflet() %>% addTiles() %>% addPolygons(data=test_akekee)
+src = "https://ecos.fws.gov/docs/species_images/doc5677.jpg"
+picture<-renderText({c('<img src="',src,'">')})
 ```
 
