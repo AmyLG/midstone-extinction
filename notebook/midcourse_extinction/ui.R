@@ -14,23 +14,25 @@ shinyUI(
         dashboardSidebar(
           selectInput("group",
                       "Choose a group:",
-                      choices = animal_group)
+                      choices = animal_group),
+          selectInput("species",
+                      "Choose a species:",
+                      choices = animal)
         ),
         
         dashboardBody(
           fluidRow(
             box(
-              title = "Common name", width = 4, solidHeader = TRUE, status = "primary",
-              "Scientific name"
+              title = "Common name", width = 4, solidHeader = TRUE, status = "primary", background = "navy",
+              "Scientific name", "esa status", "description"
               ),
-            box(status = "warning", background = "yellow", "esa status"),
-            box("description"),
-            box(background = "olive", htmlOutput("picture")),
+            
+            box(background = "yellow", htmlOutput("picture")),
             
           fluidRow(
             
             tabBox(
-        
+              
               # The id lets us use input$tabset1 on the server to find the current tab
               id = "ecos_data", height = "250px",
               tabPanel("cause", "ecos_data$cause"),
@@ -39,7 +41,7 @@ shinyUI(
               tabPanel("diet", "food"),
               tabPanel("reproduction", "reproducti")
             ),
-            box(leafletOutput("map"))
+            box(background = "purple", leafletOutput("map"))
           )  
 
           )
