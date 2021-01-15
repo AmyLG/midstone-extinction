@@ -10,4 +10,5 @@ ecos_data <- rgdal::readOGR("../../data/ecos_us_ca_geo.geojson/")
 
 animal_group <- sort(unique(ecos_data$species_gr))
 
-animal <- sort(ecos_data$common_nam)
+
+#animal <- sort(ecos_data$common_nam)

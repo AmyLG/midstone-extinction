@@ -12,12 +12,10 @@ shinyUI(
           title = "Extinction is Forever", titleWidth = 300),
         
         dashboardSidebar(
-          selectInput("group",
+          radioButtons("group",
                       "Choose a group:",
                       choices = animal_group),
-          selectInput("species",
-                      "Choose a species:",
-                      choices = animal)
+          uiOutput("species")
         ),
         
         dashboardBody(
@@ -27,7 +25,8 @@ shinyUI(
               "Scientific name", "esa status", "description"
               ),
             
-            box(background = "yellow", htmlOutput("picture")),
+            #box(background = "yellow", htmlOutput("picture")),
+            box(background = "yellow", uiOutput("picture")),
             
           fluidRow(
             
