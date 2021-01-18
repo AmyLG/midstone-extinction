@@ -18,15 +18,52 @@ shinyServer(function(input, output) {
                 })
   
   #Define server logic required to get common, scientific, esa status and description
+  output$name <- renderText(ecos_data@data %>% 
+                               filter(common_nam == input$species) %>%         
+                               pull(common_nam))
+  output$scientif_name <- renderText(ecos_data@data %>% 
+                              filter(common_nam == input$species) %>%         
+                              pull(scientific))
+  output$esa_status <- renderText(ecos_data@data %>% 
+                              filter(common_nam == input$species) %>%         
+                              pull(esa_status))
+  output$description <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(description))
   
   #Define server logic required to get the picture url  
-  src = "https://ecos.fws.gov/docs/species_images/doc4660.png"
-  output$picture <- renderText({c('<img src="',src,'"width="300" height="400">')})
+  src <- reactive({(ecos_data@data %>% 
+    filter(common_nam == input$species) %>% 
+    pull(image_url_))})
+    
+  output$picture <- renderText({c('<img src="',src(),'"width="400">')})
+  
   
   #Define server logic required to get the tabs
+
+  output$cause <- renderText(ecos_species %>% 
+                      filter(common_name == input$species) %>%         
+                      pull(cause))
   
+  output$home <- renderText(ecos_species %>% 
+                               filter(common_name == input$species) %>%         
+                               pull(home_range))
+  
+  output$habitat <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(habitat_requirements))
+  
+  output$diet <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(food))
+  
+ output$reproduction <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(reproduction))
+  
+ 
   # Define server logic required to get the map
-  output$map <- renderLeaflet({leaflet(ecos_data[ecos_data$common_nam == animal,]) %>%  addTiles() %>%
+  output$map <- renderLeaflet({leaflet(ecos_data[ecos_data$common_nam == input$species,]) %>%  addTiles() %>%
     addPolygons(color = "purple", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "purple")
 })
 })
