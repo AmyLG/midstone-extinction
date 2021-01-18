@@ -18,9 +18,18 @@ shinyServer(function(input, output) {
                 })
   
   #Define server logic required to get common, scientific, esa status and description
-  output$scientificname <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>% 
+  output$name <- renderText(ecos_data@data %>% 
+                               filter(common_nam == input$species) %>%         
+                               pull(common_nam))
+  output$scientif_name <- renderText(ecos_data@data %>% 
+                              filter(common_nam == input$species) %>%         
                               pull(scientific))
+  output$esa_status <- renderText(ecos_data@data %>% 
+                              filter(common_nam == input$species) %>%         
+                              pull(esa_status))
+  output$description <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(description))
   
   #Define server logic required to get the picture url  
   src <- reactive({(ecos_data@data %>% 
@@ -32,25 +41,25 @@ shinyServer(function(input, output) {
   
   #Define server logic required to get the tabs
 
-  output$cause <- renderText(ecos_data@data %>% 
-                      filter(common_nam == input$species) %>%         
+  output$cause <- renderText(ecos_species %>% 
+                      filter(common_name == input$species) %>%         
                       pull(cause))
   
-  output$home <- renderText(ecos_data@data %>% 
-                               filter(common_nam == input$species) %>%         
+  output$home <- renderText(ecos_species %>% 
+                               filter(common_name == input$species) %>%         
                                pull(home_range))
   
-  output$habitat <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>%         
-                              pull(habitat_re))
+  output$habitat <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(habitat_requirements))
   
-  output$diet <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>%         
+  output$diet <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
                               pull(food))
   
- output$reproduction <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>%         
-                              pull(reproducti))
+ output$reproduction <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(reproduction))
   
  
   # Define server logic required to get the map
