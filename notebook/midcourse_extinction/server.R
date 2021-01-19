@@ -7,9 +7,13 @@ shinyServer(function(input, output) {
   # first choice is animal group and second is the species specific to the animal group chosen
   output$species <- renderUI({
     
-    animal <- ecos_data@data %>% 
-      filter(species_gr == input$group) %>% 
-      pull(common_nam) %>% 
+    #animal <- ecos_data@data %>% 
+      #filter(species_gr == input$group) %>% 
+      #pull(common_nam) %>% 
+      #sort()
+    animal <- ecos_species %>% 
+      filter(species_group == input$group) %>% 
+      pull(common_name) %>% 
       sort()
 
     selectInput("species",
@@ -18,23 +22,26 @@ shinyServer(function(input, output) {
                 })
   
   #Define server logic required to get common, scientific, esa status and description
-  output$name <- renderText(ecos_data@data %>% 
-                               filter(common_nam == input$species) %>%         
-                               pull(common_nam))
-  output$scientif_name <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>%         
-                              pull(scientific))
-  output$esa_status <- renderText(ecos_data@data %>% 
-                              filter(common_nam == input$species) %>%         
+  output$name <- renderText(ecos_species%>% 
+                               filter(common_name == input$species) %>%         
+                               pull(common_name))
+  output$scientif_name <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(scientific_name))
+  output$country <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
+                              pull(country))
+  output$esa_status <- renderText(ecos_species %>% 
+                              filter(common_name == input$species) %>%         
                               pull(esa_status))
   output$description <- renderText(ecos_species %>% 
                               filter(common_name == input$species) %>%         
                               pull(description))
   
   #Define server logic required to get the picture url  
-  src <- reactive({(ecos_data@data %>% 
-    filter(common_nam == input$species) %>% 
-    pull(image_url_))})
+  src <- reactive({(ecos_species %>% 
+    filter(common_name == input$species) %>% 
+    pull(image_url_full))})
     
   output$picture <- renderText({c('<img src="',src(),'"width="400">')})
   
@@ -42,8 +49,8 @@ shinyServer(function(input, output) {
   #Define server logic required to get the tabs
 
   output$cause <- renderText(ecos_species %>% 
-                      filter(common_name == input$species) %>%         
-                      pull(cause))
+                                filter(common_name == input$species) %>%         
+                                pull(cause))
   
   output$home <- renderText(ecos_species %>% 
                                filter(common_name == input$species) %>%         

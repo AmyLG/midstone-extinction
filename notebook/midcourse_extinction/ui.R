@@ -43,11 +43,19 @@ shinyUI(
               textOutput("scientif_name"),
               tags$head(tags$style("#scientif_name{color: white;
                                  font-size: 14px;
-                                 font-weight: italic;
+                                 font-style: italic;
                                  background:#0B173B;
                                  }"
                                   )
                         ),
+              textOutput("country"),
+              tags$head(tags$style("#country{color: white;
+                                 font-size: 16px;
+                                 font-style: bold;
+                                 background:#0B173B;
+                                 }"
+              )
+              ),
               textOutput("esa_status"),
               tags$head(tags$style("#esa_status{color: #ff4500;
                                  font-size: 16px;

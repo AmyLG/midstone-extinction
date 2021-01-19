@@ -17,27 +17,29 @@ library(leaflet)
 ### libraries needed to read the geojson file
 library(sp)
 library(rgdal)
+
+library(treemap)
 ```
 
 ```{r ecos file}
 ### Read the file
-ecos_species <- read.csv("../data/ecos_animal_us_ca_clean.csv")
+ecos_species <- read.csv("../data/ecos_end_species_countries_clean.csv")
 ```
 
 ```{r}
-### remove the column "status_code"
-ecos_species <- select(ecos_species, -"status_code")
+### remove a column
+#ecos_species <- select(ecos_species, -"status_code")
 ```
 
 ### Need to clean polygon data
 
 ```{r}
-### 5 locations are missing change blank for "None"
+### For the locations missing change blank for "None"
 ecos_species$location[ecos_species$location  == ""]  <-  "None"
 ```
 
 ```{r}
-### And I decided to drop them...
+### If I decide to drop them (make a new Df)
 ecos_species2<-subset(ecos_species, location!="None")
 ```
 
@@ -70,7 +72,7 @@ ecos_species2$loc5 <-gsub('.{2}$', "", ecos_species2$loc5)
 ```
 
 ```{r}
-### It can be cleaned to work as above but I decided to convert the polygones data as geojson data in notebook (midstone_cleaning_03.ipynb)
+### It can be cleaned to work as above but I decided to convert the polygons data as geojson data in notebook (midstone_cleaning_03.ipynb)
 ### attention: Not done cleaning this data!!!
 ```
 
@@ -92,7 +94,7 @@ leaflet() %>% addTiles() %>%
 
 ```{r}
 ### Read the geospatial files using rgdal
-ecos_data <- rgdal::readOGR("../data/ecos_us_ca_geo.geojson/")
+ecos_data <- rgdal::readOGR("../data/ecos_all_geo.geojson/")
 ```
 
 ```{r akekee test}
@@ -105,10 +107,18 @@ leaflet(ecos_data[ecos_data$common_nam == "Polar bear",]) %>%  addProviderTiles(
   addPolygons(color = "red", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "red")
 ```
 
-### Test image url
+### Make a tree map and filter/mutate the dataframe if needed
 
 ```{r}
-src = "https://ecos.fws.gov/docs/species_images/doc5677.jpg"
-picture<-renderText({c('<img src="',src,'">')})
+library(treemapify)
+### Do I need to clean it?
+
+```
+
+```{r}
+#ecos_species %>% 
+  #filter(species_group == "United States") %>% 
+  ggplot(ecos_species, aes(area = species_group, fill = common_name)) +
+  geom_treemap()
 ```
 
