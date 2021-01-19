@@ -6,8 +6,10 @@ library(sp)
 library(rgdal)
 
 ### Read the geospatial files using rgdal
-ecos_data <- rgdal::readOGR("../../data/ecos_us_ca_geo.geojson/")
+ecos_data <- rgdal::readOGR("../../data/ecos_all_geo.geojson/")
 
-ecos_species <- read.csv("../../data/ecos_animal_us_ca_clean.csv")
+ecos_species <- read.csv("../../data/ecos_end_species_countries_clean.csv")
 
-animal_group <- sort(unique(ecos_data$species_gr))
+#animal_group <- sort(unique(ecos_data$species_gr))
+
+animal_group <- sort(unique(ecos_species$species_gr))
