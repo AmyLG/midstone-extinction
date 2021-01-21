@@ -73,4 +73,27 @@ shinyServer(function(input, output) {
   output$map <- renderLeaflet({leaflet(ecos_data[ecos_data$common_nam == input$species,]) %>%  addTiles() %>%
     addPolygons(color = "purple", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "purple")
 })
+  
+  # Define server logic required to get the treemap countries
+  #makeReactiveBinding('country_treemap')
+  
+  output$country_treemap <- renderPlot({ 
+    ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
+      geom_treemap() +
+      ggtitle("Species group and status per country") +
+      geom_treemap_subgroup_border() +
+      geom_treemap_subgroup_text(place = "centre", grow = T) +
+      geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+      scale_fill_brewer(palette = "PRGn")
+})
+  # Define server logic required to get the treemap USA
+  output$USA_treemap <- renderPlot({
+    ggplot(ecos_treemap_usa_count, aes(area = species_count, fill = esa_status, label = state, subgroup = species_group)) +
+      geom_treemap() +
+      ggtitle("Species group and status per state in the United State") +
+      geom_treemap_subgroup_border() +
+      geom_treemap_subgroup_text(place = "centre", grow = T) +
+      geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+      scale_fill_brewer(palette = "RdBu")
+  })
 })

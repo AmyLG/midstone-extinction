@@ -17,8 +17,13 @@ library(leaflet)
 ### libraries needed to read the geojson file
 library(sp)
 library(rgdal)
-
+### treemap
 library(treemap)
+library(treemapify)
+### Word cloud
+library(wordcloud)
+library(RColorBrewer)
+library(tm)
 ```
 
 ```{r ecos file}
@@ -107,18 +112,86 @@ leaflet(ecos_data[ecos_data$common_nam == "Polar bear",]) %>%  addProviderTiles(
   addPolygons(color = "red", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "red")
 ```
 
-### Make a tree map and filter/mutate the dataframe if needed
+### Filter/mutate the dataframe to make a treemap
 
 ```{r}
-library(treemapify)
-### Do I need to clean it?
+### Open file with country data
+ecos_treemap <- read.csv("../data/ecos_countries_treemap_clean.csv")
 
 ```
 
 ```{r}
-#ecos_species %>% 
-  #filter(species_group == "United States") %>% 
-  ggplot(ecos_species, aes(area = species_group, fill = common_name)) +
-  geom_treemap()
+### remplace "" with None
+ecos_treemap$country[ecos_treemap$country  == ""]  <-  "None"
+### Drop None
+ecos_treemap <- subset(ecos_treemap, country != "None")
+```
+
+```{r}
+# get a count of species per country and group species
+ecos_treemap_count <- ecos_treemap %>%
+  group_by(country, esa_status) %>% 
+  count(species_group, name = "species_count")
+```
+
+```{r}
+### save the file
+write.csv(ecos_treemap_count, "../data/ecos_treemap_count.csv", row.names = FALSE)
+```
+
+
+```{r}
+#Treemap test esa for fill color
+  ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
+  geom_treemap() +
+  ggtitle("species group per country") +
+  geom_treemap_subgroup_border() +
+  geom_treemap_subgroup_text(place = "centre", grow = T) +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+  scale_fill_brewer(palette = "Accent")
+```
+
+```{r}
+#Treemap test species_group for fill color
+  ggplot(ecos_treemap_count, aes(area = species_count, fill = species_group, label = country, subgroup = esa_status)) +
+  geom_treemap() +
+  ggtitle("species group per country") +
+  geom_treemap_subgroup_border() +
+  geom_treemap_subgroup_text(place = "centre", grow = T) +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) 
+```
+```{r}
+### Open file with states data
+ecos_treemap_usa <- read.csv("../data/ecos_states_us_clean.csv")
+```
+
+```{r}
+# get a count of species per state and group species
+ecos_treemap_usa_count <- ecos_treemap_usa %>%
+  group_by(esa_status, state) %>% 
+  count(species_group, name = "species_count")
+```
+
+```{r}
+### save the file
+write.csv(ecos_treemap_usa_count, "../data/ecos_treemap_usa_count.csv", row.names = FALSE)
+```
+
+
+```{r}
+#Treemap test 
+  ggplot(ecos_treemap_usa_count, aes(area = species_count, fill = esa_status, label = state, subgroup = species_group)) +
+  geom_treemap() +
+  ggtitle("ESA status and species group per US state") +
+  geom_treemap_subgroup_border() +
+  geom_treemap_subgroup_text(place = "centre", grow = T) +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+  scale_fill_brewer(palette = "RdBu")
+```
+
+### Try to make the cloud word
+
+```{r}
+
 ```
 
