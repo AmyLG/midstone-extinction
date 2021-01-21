@@ -6,9 +6,8 @@
 #teal html code: #00c7c7
 
 shinyUI(
-    dashboardPage(#skin = "black",
+    dashboardPage(
 
-      
         dashboardHeader(
           title = "Extinction is Forever", titleWidth = 300),
                      
@@ -20,19 +19,35 @@ shinyUI(
         ),
         
         dashboardBody(
-          fluidRow(
-            tags$head(tags$style(HTML('
-      .main-header .logo {
-        #font-family: "Georgia", Times, "Times New Roman", serif;
-        font-size: 24px;
-        font-weight: bold;
-      }
-      .skin-blue .main-header .logo {
-                            color: white;
-                            background-color: #1EB9BC;
-                            }
-    '))), 
-            # First box for name and description
+          tabsetPanel(
+            tabPanel("Home",
+                     #Home page
+                     fluidRow(
+                       box(width = NULL,
+                           "This is a test text"
+                          )
+                       )
+                     ), #TabPanel1
+            
+          tabPanel("Species information",  
+            fluidRow(
+              tags$head(
+              tags$style(HTML('
+              .main-header .logo {
+              #font-family: "Georgia", Times, "Times New Roman", serif;
+              font-size: 24px;
+              font-weight: bold;
+              }
+              .skin-blue .main-header .logo {
+              color: white;
+              background-color: #1EB9BC;
+              group{background-color:orange} 
+             }
+             '))
+            ), 
+            
+            # Box for name and basic information
+          
             box(title = textOutput("name"), solidHeader = TRUE, background = "navy", status = "primary",
               tags$head(tags$style("#name{color: white;
                                  font-size: 18px;
@@ -74,12 +89,14 @@ shinyUI(
 
               ),
             
-            #box for animal picture
-            box(background = "yellow", uiOutput("picture")),
+            # Box for species picture 
+          
+            box(background = "yellow",
+                uiOutput("picture")
+                ),
             
-          fluidRow(
+            # Box for animal information table 
             
-            # box for animal information table  
             tabBox(
               tabPanel("cause",tableOutput("cause")),
               tabPanel("home", tableOutput("home")),
@@ -88,13 +105,47 @@ shinyUI(
               tabPanel("reproduction", tableOutput("reproduction"))
             ),
             
-            # box for map location
-            box(background = "purple", leafletOutput("map"))
-          )  
-
-          )
+            # Box for leaflet map polygon
+            
+            box(background = "purple",
+                leafletOutput("map"))
+           
         )
 
+          ), #TabPanel2
         
-  ) 
-)
+        ### Panel for Treemap
+        tabPanel("Treemaps",
+                 #Main page
+                 fluidRow(
+                   
+                       box(
+                         width = NULL,
+                         plotOutput("country_treemap")
+                       ),
+                   
+                   
+                          box(
+                            width = NULL,
+                            plotOutput("USA_treemap")
+                          )
+                   
+                 )
+        ), #TabPanel3
+        
+        ### Panel for Cloud word
+        tabPanel("Cloud word",
+                 #Main page
+                 fluidRow(
+                   box(width = NULL,
+                       plotOutput("cause_words")
+                   )
+                 )
+        ) #TabPanel4
+
+        ) #tabsetPanel
+
+        ) #dashboardBody
+       
+  ) #dashboardPage
+) #dashboardPage

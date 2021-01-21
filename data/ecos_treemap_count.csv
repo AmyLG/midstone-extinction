@@ -1,0 +1,491 @@
+"country","esa_status","species_group","species_count"
+"Afghanistan","Endangered","Mammals",3
+"Afghanistan","Endangered","Reptiles",1
+"Albania","Endangered","Reptiles",1
+"Algeria","Endangered","Birds",1
+"Algeria","Endangered","Mammals",1
+"American Samoa","Endangered","Reptiles",2
+"Angola","Endangered","Mammals",2
+"Angola","Endangered","Reptiles",1
+"Angola","Threatened","Reptiles",1
+"Antigua and Barbuda","Endangered","Reptiles",2
+"Antigua and Barbuda","Threatened","Reptiles",1
+"Argentina","Endangered","Birds",4
+"Argentina","Endangered","Mammals",4
+"Argentina","Endangered","Reptiles",1
+"Argentina","Threatened","Birds",1
+"Argentina","Threatened","Reptiles",1
+"Aruba","Endangered","Reptiles",1
+"Aruba","Threatened","Birds",1
+"Aruba","Threatened","Reptiles",1
+"Australia","Endangered","Birds",5
+"Australia","Endangered","Mammals",12
+"Australia","Endangered","Reptiles",2
+"Australia","Threatened","Mammals",1
+"Australia","Threatened","Reptiles",2
+"Bahamas","Endangered","Birds",1
+"Bahamas","Endangered","Reptiles",4
+"Bahamas","Threatened","Birds",1
+"Bahamas","Threatened","Mammals",1
+"Bahamas","Threatened","Reptiles",5
+"Bahrain","Endangered","Reptiles",2
+"Bangladesh","Endangered","Mammals",3
+"Bangladesh","Endangered","Reptiles",1
+"Bangladesh","Threatened","Reptiles",1
+"Barbados","Endangered","Birds",1
+"Barbados","Endangered","Reptiles",2
+"Barbados","Threatened","Birds",1
+"Belize","Endangered","Reptiles",2
+"Belize","Threatened","Birds",1
+"Belize","Threatened","Corals",1
+"Belize","Threatened","Mammals",1
+"Belize","Threatened","Reptiles",1
+"Benin","Endangered","Reptiles",1
+"Benin","Threatened","Mammals",1
+"Benin","Threatened","Reptiles",1
+"Bermuda","Threatened","Birds",1
+"Bhutan","Endangered","Mammals",3
+"Bolivia","Endangered","Mammals",2
+"Bolivia","Threatened","Reptiles",1
+"Brazil","Endangered","Birds",6
+"Brazil","Endangered","Mammals",3
+"Brazil","Endangered","Reptiles",2
+"Brazil","Threatened","Birds",3
+"Brazil","Threatened","Mammals",1
+"Brazil","Threatened","Reptiles",2
+"British Indian Ocean Territory","Endangered","Reptiles",1
+"British Virgin Islands","Endangered","Reptiles",4
+"British Virgin Islands","Threatened","Amphibians",1
+"British Virgin Islands","Threatened","Birds",2
+"Brunei","Threatened","Reptiles",1
+"Burkina Faso","Threatened","Mammals",1
+"Burundi","Threatened","Mammals",1
+"Cambodia","Endangered","Mammals",1
+"Cambodia","Endangered","Reptiles",1
+"Cambodia","Threatened","Reptiles",1
+"Cameroon","Endangered","Amphibians",1
+"Cameroon","Endangered","Birds",2
+"Cameroon","Threatened","Amphibians",1
+"Cameroon","Threatened","Mammals",1
+"Cameroon","Threatened","Reptiles",1
+"Canada","Endangered","Birds",4
+"Canada","Endangered","Clams",2
+"Canada","Endangered","Fishes",1
+"Canada","Endangered","Insects",2
+"Canada","Endangered","Mammals",2
+"Canada","Endangered","Reptiles",1
+"Canada","Species of Concern","Birds",5
+"Canada","Species of Concern","Clams",1
+"Canada","Threatened","Amphibians",1
+"Canada","Threatened","Birds",5
+"Canada","Threatened","Fishes",1
+"Canada","Threatened","Flowering Plants",4
+"Canada","Threatened","Insects",2
+"Canada","Threatened","Mammals",2
+"Canada","Threatened","Reptiles",1
+"Cape Verde","Threatened","Reptiles",1
+"Cayman Islands","Endangered","Birds",1
+"Cayman Islands","Endangered","Reptiles",2
+"Cayman Islands","Threatened","Birds",1
+"Cayman Islands","Threatened","Reptiles",1
+"Central African Republic","Threatened","Mammals",1
+"Chad","Threatened","Mammals",1
+"Chile","Endangered","Birds",1
+"Chile","Endangered","Mammals",1
+"Chile","Endangered","Reptiles",1
+"Chile","Threatened","Birds",1
+"Chile","Threatened","Reptiles",1
+"China","Endangered","Amphibians",1
+"China","Endangered","Birds",13
+"China","Endangered","Mammals",9
+"China","Endangered","Reptiles",3
+"Christmas Island","Endangered","Birds",1
+"Colombia","Endangered","Birds",1
+"Colombia","Endangered","Mammals",4
+"Colombia","Endangered","Reptiles",3
+"Colombia","Threatened","Birds",1
+"Colombia","Threatened","Corals",1
+"Colombia","Threatened","Mammals",1
+"Colombia","Threatened","Reptiles",2
+"Comoros","Endangered","Reptiles",1
+"Congo","Endangered","Reptiles",1
+"Congo","Threatened","Mammals",1
+"Congo","Threatened","Reptiles",1
+"Congo (Zaire)","Threatened","Mammals",1
+"Cook Islands","Endangered","Reptiles",1
+"Costa Rica","Endangered","Amphibians",1
+"Costa Rica","Endangered","Mammals",3
+"Costa Rica","Endangered","Reptiles",2
+"Costa Rica","Threatened","Birds",1
+"Costa Rica","Threatened","Corals",1
+"Costa Rica","Threatened","Mammals",1
+"Costa Rica","Threatened","Reptiles",2
+"Cuba","Endangered","Birds",1
+"Cuba","Endangered","Flowering Plants",1
+"Cuba","Endangered","Mammals",2
+"Cuba","Endangered","Reptiles",3
+"Cuba","Threatened","Birds",1
+"Cuba","Threatened","Mammals",1
+"Cuba","Threatened","Reptiles",2
+"Cyprus","Endangered","Mammals",1
+"Denmark","Threatened","Mammals",1
+"Dominica","Endangered","Birds",2
+"Dominica","Endangered","Reptiles",1
+"Dominican Republic","Endangered","Birds",1
+"Dominican Republic","Endangered","Flowering Plants",2
+"Dominican Republic","Endangered","Mammals",1
+"Dominican Republic","Endangered","Reptiles",2
+"Dominican Republic","Threatened","Birds",1
+"Dominican Republic","Threatened","Flowering Plants",2
+"Dominican Republic","Threatened","Mammals",1
+"Dominican Republic","Threatened","Reptiles",2
+"Ecuador","Endangered","Birds",2
+"Ecuador","Endangered","Mammals",2
+"Ecuador","Endangered","Reptiles",3
+"Ecuador","Threatened","Birds",1
+"Ecuador","Threatened","Reptiles",2
+"Egypt","Endangered","Mammals",2
+"Egypt","Endangered","Reptiles",1
+"El Salvador","Endangered","Birds",1
+"El Salvador","Endangered","Reptiles",2
+"El Salvador","Threatened","Birds",1
+"El Salvador","Threatened","Mammals",1
+"El Salvador","Threatened","Reptiles",2
+"Equatorial Guinea","Endangered","Reptiles",1
+"Equatorial Guinea","Threatened","Amphibians",1
+"Equatorial Guinea","Threatened","Reptiles",1
+"Eritrea","Endangered","Reptiles",2
+"Eritrea","Threatened","Reptiles",1
+"Ethiopia","Endangered","Amphibians",1
+"Ethiopia","Threatened","Mammals",1
+"Federated States of Micronesia","Endangered","Reptiles",2
+"Federated States of Micronesia","Threatened","Reptiles",1
+"Fiji","Endangered","Reptiles",5
+"Finland","Endangered","Mammals",1
+"French Guiana","Endangered","Reptiles",1
+"French Guiana","Threatened","Birds",1
+"French Guiana","Threatened","Mammals",1
+"French Guiana","Threatened","Reptiles",1
+"French Polynesia","Endangered","Birds",1
+"French Polynesia","Endangered","Reptiles",1
+"French Southern Territories","Endangered","Birds",1
+"French Southern Territories","Endangered","Reptiles",1
+"Gabon","Endangered","Birds",1
+"Gabon","Endangered","Reptiles",1
+"Gabon","Threatened","Amphibians",1
+"Gabon","Threatened","Mammals",1
+"Gabon","Threatened","Reptiles",1
+"Gambia","Threatened","Reptiles",1
+"Ghana","Endangered","Reptiles",1
+"Ghana","Threatened","Mammals",1
+"Ghana","Threatened","Reptiles",1
+"Grenada","Endangered","Reptiles",2
+"Guadeloupe","Endangered","Flowering Plants",1
+"Guadeloupe","Endangered","Reptiles",2
+"Guadeloupe","Threatened","Birds",1
+"Guadeloupe","Threatened","Reptiles",1
+"Guam","Endangered","Reptiles",2
+"Guatemala","Endangered","Birds",3
+"Guatemala","Endangered","Reptiles",2
+"Guatemala","Threatened","Birds",1
+"Guatemala","Threatened","Corals",1
+"Guatemala","Threatened","Mammals",1
+"Guatemala","Threatened","Reptiles",2
+"Guinea","Endangered","Amphibians",1
+"Guinea","Threatened","Mammals",1
+"Guinea","Threatened","Reptiles",1
+"Guinea-Bissau","Threatened","Reptiles",1
+"Guyana","Endangered","Reptiles",1
+"Guyana","Threatened","Birds",1
+"Guyana","Threatened","Mammals",1
+"Guyana","Threatened","Reptiles",1
+"Haiti","Endangered","Birds",1
+"Haiti","Endangered","Mammals",1
+"Haiti","Endangered","Reptiles",1
+"Haiti","Threatened","Birds",2
+"Haiti","Threatened","Mammals",1
+"Haiti","Threatened","Reptiles",1
+"Honduras","Endangered","Birds",1
+"Honduras","Endangered","Reptiles",2
+"Honduras","Threatened","Corals",1
+"Honduras","Threatened","Mammals",1
+"Honduras","Threatened","Reptiles",2
+"India","Endangered","Birds",8
+"India","Endangered","Mammals",13
+"India","Endangered","Reptiles",6
+"India","Threatened","Reptiles",1
+"Indonesia","Endangered","Birds",2
+"Indonesia","Endangered","Mammals",6
+"Indonesia","Endangered","Reptiles",4
+"Indonesia","Threatened","Reptiles",1
+"Iran","Endangered","Birds",1
+"Iran","Endangered","Reptiles",2
+"Iran","Threatened","Reptiles",1
+"Iraq","Endangered","Reptiles",1
+"Israel","Endangered","Mammals",1
+"Italy","Endangered","Mammals",2
+"Italy","Endangered","Reptiles",1
+"Ivory Coast","Endangered","Amphibians",1
+"Ivory Coast","Endangered","Mammals",1
+"Ivory Coast","Endangered","Reptiles",1
+"Ivory Coast","Threatened","Mammals",1
+"Ivory Coast","Threatened","Reptiles",1
+"Jamaica","Endangered","Reptiles",2
+"Jamaica","Threatened","Birds",1
+"Jamaica","Threatened","Mammals",1
+"Jamaica","Threatened","Reptiles",2
+"Japan","Endangered","Amphibians",1
+"Japan","Endangered","Birds",5
+"Japan","Endangered","Mammals",1
+"Japan","Endangered","Reptiles",1
+"Japan","Threatened","Mammals",1
+"Japan","Threatened","Reptiles",1
+"Jordan","Endangered","Birds",1
+"Jordan","Endangered","Mammals",1
+"Kazakstan","Endangered","Mammals",1
+"Kenya","Endangered","Reptiles",1
+"Kenya","Threatened","Mammals",1
+"Kenya","Threatened","Reptiles",1
+"Kiribati","Endangered","Reptiles",2
+"Kuwait","Endangered","Reptiles",1
+"Kyrgyzstan","Threatened","Mammals",1
+"Laos","Endangered","Mammals",1
+"Liberia","Endangered","Amphibians",1
+"Liberia","Endangered","Reptiles",1
+"Liberia","Threatened","Mammals",1
+"Liberia","Threatened","Reptiles",1
+"Libya","Endangered","Mammals",1
+"Madagascar","Endangered","Birds",3
+"Madagascar","Endangered","Mammals",3
+"Madagascar","Endangered","Reptiles",3
+"Madagascar","Threatened","Reptiles",1
+"Malaysia","Endangered","Birds",1
+"Malaysia","Endangered","Mammals",3
+"Malaysia","Endangered","Reptiles",5
+"Malaysia","Threatened","Reptiles",1
+"Maldives","Endangered","Reptiles",1
+"Maldives","Threatened","Reptiles",1
+"Mali","Threatened","Mammals",1
+"Marshall Islands","Endangered","Reptiles",2
+"Martinique","Endangered","Reptiles",2
+"Martinique","Threatened","Reptiles",1
+"Mauritania","Endangered","Reptiles",1
+"Mauritania","Threatened","Mammals",1
+"Mauritania","Threatened","Reptiles",1
+"Mauritius","Endangered","Birds",5
+"Mauritius","Endangered","Mammals",1
+"Mauritius","Endangered","Reptiles",3
+"Mauritius","Threatened","Reptiles",1
+"Mayotte","Endangered","Reptiles",1
+"Mexico","Endangered","Amphibians",1
+"Mexico","Endangered","Birds",9
+"Mexico","Endangered","Clams",1
+"Mexico","Endangered","Fishes",5
+"Mexico","Endangered","Flowering Plants",4
+"Mexico","Endangered","Insects",1
+"Mexico","Endangered","Mammals",9
+"Mexico","Endangered","Reptiles",7
+"Mexico","Endangered","Snails",1
+"Mexico","Species of Concern","Birds",5
+"Mexico","Species of Concern","Mammals",2
+"Mexico","Threatened","Amphibians",1
+"Mexico","Threatened","Birds",4
+"Mexico","Threatened","Corals",1
+"Mexico","Threatened","Fishes",4
+"Mexico","Threatened","Flowering Plants",2
+"Mexico","Threatened","Mammals",3
+"Mexico","Threatened","Reptiles",3
+"Mongolia","Endangered","Birds",1
+"Mongolia","Endangered","Mammals",3
+"Mongolia","Threatened","Mammals",1
+"Montserrat","Endangered","Reptiles",1
+"Morocco","Endangered","Birds",1
+"Morocco","Threatened","Reptiles",1
+"Mozambique","Endangered","Reptiles",2
+"Mozambique","Threatened","Birds",1
+"Mozambique","Threatened","Reptiles",1
+"Myanmar (Burma)","Endangered","Birds",2
+"Myanmar (Burma)","Endangered","Mammals",5
+"Myanmar (Burma)","Endangered","Reptiles",4
+"Myanmar (Burma)","Threatened","Reptiles",1
+"Namibia","Endangered","Mammals",1
+"Namibia","Threatened","Reptiles",1
+"Nauru","Endangered","Reptiles",1
+"Nepal","Endangered","Mammals",5
+"Netherlands Antilles","Endangered","Reptiles",2
+"New Caledonia","Endangered","Birds",1
+"New Zealand","Endangered","Birds",5
+"New Zealand","Endangered","Reptiles",2
+"Nicaragua","Endangered","Birds",1
+"Nicaragua","Endangered","Mammals",1
+"Nicaragua","Endangered","Reptiles",2
+"Nicaragua","Threatened","Corals",1
+"Nicaragua","Threatened","Mammals",1
+"Nicaragua","Threatened","Reptiles",2
+"Niger","Threatened","Mammals",1
+"Nigeria","Threatened","Mammals",1
+"Nigeria","Threatened","Reptiles",1
+"Norfolk Island","Endangered","Birds",1
+"North Korea","Endangered","Birds",3
+"Northern Mariana Islands","Endangered","Reptiles",2
+"Norway","Threatened","Mammals",1
+"Oman","Endangered","Mammals",1
+"Oman","Endangered","Reptiles",1
+"Oman","Threatened","Reptiles",1
+"Pakistan","Endangered","Birds",2
+"Pakistan","Endangered","Mammals",3
+"Pakistan","Threatened","Reptiles",1
+"Palau","Endangered","Reptiles",2
+"Panama","Endangered","Amphibians",1
+"Panama","Endangered","Birds",1
+"Panama","Endangered","Mammals",2
+"Panama","Endangered","Reptiles",2
+"Panama","Threatened","Birds",1
+"Panama","Threatened","Corals",1
+"Panama","Threatened","Mammals",1
+"Panama","Threatened","Reptiles",1
+"Papua New Guinea","Endangered","Reptiles",3
+"Papua New Guinea","Threatened","Reptiles",1
+"Paraguay","Endangered","Birds",1
+"Paraguay","Endangered","Mammals",3
+"Paraguay","Threatened","Birds",1
+"Peru","Endangered","Mammals",2
+"Peru","Endangered","Reptiles",1
+"Peru","Threatened","Reptiles",3
+"Philippines","Endangered","Birds",2
+"Philippines","Endangered","Reptiles",3
+"Philippines","Threatened","Mammals",1
+"Philippines","Threatened","Reptiles",1
+"Portugal","Endangered","Birds",1
+"Portugal","Endangered","Reptiles",1
+"Puerto Rico","Endangered","Birds",4
+"Puerto Rico","Endangered","Flowering Plants",14
+"Puerto Rico","Endangered","Reptiles",4
+"Puerto Rico","Threatened","Amphibians",2
+"Puerto Rico","Threatened","Birds",1
+"Puerto Rico","Threatened","Flowering Plants",4
+"Puerto Rico","Threatened","Mammals",1
+"Puerto Rico","Threatened","Reptiles",2
+"Qatar","Endangered","Reptiles",1
+"Reunion","Endangered","Reptiles",1
+"Russia","Endangered","Birds",2
+"Russia","Endangered","Mammals",2
+"Russia","Threatened","Birds",2
+"Russia","Threatened","Mammals",1
+"Saint Kitts and Nevis","Endangered","Reptiles",2
+"Saint Lucia","Endangered","Birds",1
+"Saint Lucia","Endangered","Reptiles",1
+"Saint Vincent and the Grenadines","Endangered","Reptiles",1
+"Sao Tome and Principe","Endangered","Reptiles",2
+"Sao Tome and Principe","Threatened","Reptiles",1
+"Saudi Arabia","Endangered","Birds",1
+"Saudi Arabia","Endangered","Reptiles",1
+"Senegal","Endangered","Mammals",1
+"Senegal","Endangered","Reptiles",1
+"Senegal","Threatened","Mammals",1
+"Senegal","Threatened","Reptiles",1
+"Seychelles","Endangered","Birds",7
+"Seychelles","Endangered","Reptiles",1
+"Sierra Leone","Threatened","Mammals",1
+"Sierra Leone","Threatened","Reptiles",1
+"Solomon Islands","Endangered","Reptiles",3
+"Somalia","Endangered","Reptiles",1
+"Somalia","Threatened","Reptiles",1
+"South Africa","Endangered","Reptiles",2
+"South Africa","Threatened","Reptiles",1
+"South Korea","Endangered","Birds",3
+"Spain","Endangered","Birds",2
+"Spain","Endangered","Mammals",1
+"Spain","Endangered","Reptiles",1
+"Spain","Threatened","Reptiles",1
+"Sri Lanka","Endangered","Birds",1
+"Sri Lanka","Endangered","Mammals",1
+"Sri Lanka","Endangered","Reptiles",4
+"Sri Lanka","Threatened","Mammals",2
+"Sri Lanka","Threatened","Reptiles",1
+"Sudan","Endangered","Mammals",1
+"Sudan","Endangered","Reptiles",1
+"Sudan","Threatened","Mammals",1
+"Sudan","Threatened","Reptiles",1
+"Suriname","Endangered","Reptiles",1
+"Suriname","Threatened","Birds",1
+"Suriname","Threatened","Reptiles",1
+"Taiwan","Endangered","Birds",3
+"Taiwan","Endangered","Mammals",1
+"Taiwan","Endangered","Reptiles",2
+"Taiwan","Threatened","Mammals",1
+"Taiwan","Threatened","Reptiles",1
+"Tajikistan","Threatened","Mammals",1
+"Tanzania","Endangered","Amphibians",1
+"Tanzania","Endangered","Mammals",2
+"Tanzania","Endangered","Reptiles",1
+"Tanzania","Threatened","Birds",1
+"Tanzania","Threatened","Mammals",1
+"Tanzania","Threatened","Reptiles",1
+"Thailand","Endangered","Birds",1
+"Thailand","Endangered","Mammals",3
+"Thailand","Endangered","Reptiles",3
+"Thailand","Threatened","Reptiles",1
+"Togo","Endangered","Reptiles",1
+"Togo","Threatened","Mammals",1
+"Togo","Threatened","Reptiles",1
+"Tokelau","Endangered","Reptiles",1
+"Tonga","Endangered","Reptiles",2
+"Trinidad and Tobago","Endangered","Reptiles",2
+"Trinidad and Tobago","Threatened","Birds",1
+"Trinidad and Tobago","Threatened","Mammals",1
+"Trinidad and Tobago","Threatened","Reptiles",1
+"Turks and Caicos Islands","Endangered","Reptiles",1
+"Turks and Caicos Islands","Threatened","Reptiles",1
+"Tuvalu","Endangered","Reptiles",1
+"U.S. Pacific Outlying Islands","Endangered","Reptiles",2
+"U.S. Virgin Islands","Endangered","Flowering Plants",1
+"U.S. Virgin Islands","Endangered","Reptiles",4
+"U.S. Virgin Islands","Threatened","Birds",1
+"U.S. Virgin Islands","Threatened","Mammals",1
+"Uganda","Threatened","Mammals",1
+"United Arab Emirates","Endangered","Reptiles",1
+"United States","Endangered","Amphibians",12
+"United States","Endangered","Arachnids",1
+"United States","Endangered","Birds",37
+"United States","Endangered","Clams",39
+"United States","Endangered","Crustaceans",5
+"United States","Endangered","Ferns and Allies",1
+"United States","Endangered","Fishes",31
+"United States","Endangered","Flowering Plants",61
+"United States","Endangered","Insects",22
+"United States","Endangered","Mammals",32
+"United States","Endangered","Reptiles",10
+"United States","Endangered","Snails",4
+"United States","Extinction","Birds",2
+"United States","Species of Concern","Amphibians",1
+"United States","Species of Concern","Birds",28
+"United States","Species of Concern","Clams",1
+"United States","Species of Concern","Flowering Plants",1
+"United States","Species of Concern","Mammals",3
+"United States","Threatened","Amphibians",11
+"United States","Threatened","Birds",19
+"United States","Threatened","Clams",6
+"United States","Threatened","Crustaceans",3
+"United States","Threatened","Fishes",21
+"United States","Threatened","Flowering Plants",40
+"United States","Threatened","Insects",11
+"United States","Threatened","Mammals",13
+"United States","Threatened","Reptiles",20
+"United States","Threatened","Snails",1
+"Uruguay","Endangered","Mammals",2
+"Uruguay","Threatened","Birds",1
+"Uzbekistan","Endangered","Mammals",1
+"Vanuatu","Endangered","Reptiles",2
+"Venezuela","Endangered","Mammals",2
+"Venezuela","Endangered","Reptiles",2
+"Venezuela","Threatened","Birds",1
+"Venezuela","Threatened","Corals",1
+"Venezuela","Threatened","Mammals",1
+"Venezuela","Threatened","Reptiles",2
+"Vietnam","Endangered","Birds",1
+"Vietnam","Endangered","Mammals",1
+"Vietnam","Endangered","Reptiles",2
+"Vietnam","Threatened","Reptiles",1
+"Yemen","Endangered","Reptiles",1
+"Yemen","Threatened","Reptiles",1
