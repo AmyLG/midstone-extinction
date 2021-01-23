@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Look at the data and finish the cleaning
 
 ```{r}
+### Plots
 library(tidyverse)
+library(plotly)
 library(leaflet)
 ### libraries needed to read the geojson file
 library(sp)
@@ -30,6 +32,11 @@ library(tm)
 ### Read the file
 ecos_species <- read.csv("../data/ecos_end_species_countries_clean.csv")
 ```
+
+```{r}
+ecos_species %>% count(country)
+```
+
 
 ```{r}
 ### remove a column
@@ -128,6 +135,12 @@ ecos_treemap <- subset(ecos_treemap, country != "None")
 ```
 
 ```{r}
+#Reduce the number of variables
+ecos_treemap_country <- ecos_treemap %>% 
+  select(common_name, esa_status, species_group, country)
+```
+
+```{r}
 # get a count of species per country and group species
 ecos_treemap_count <- ecos_treemap %>%
   group_by(country, esa_status) %>% 
@@ -137,19 +150,356 @@ ecos_treemap_count <- ecos_treemap %>%
 ```{r}
 ### save the file
 write.csv(ecos_treemap_count, "../data/ecos_treemap_count.csv", row.names = FALSE)
+write.csv(ecos_treemap_country, "../data/treemap_country_clean.csv", row.names = FALSE)
+```
+
+```{r}
+## Load dataset
+treemap_country_count = read.csv('../data/ecos_treemap_count.csv')
+treemap_country = read.csv('../data/ecos_treemap_count.csv')
+```
+
+```{r}
+### Treemap on plotly test using: "https://towardsdatascience.com/interactive-covid19-report-with-rmarkdown-plotly-leaflet-and-shiny-c6a716af7d9b"
+
+## Make species_group tables by only selecting the rows
+
+countries = treemap_country_count %>%
+  rename(counts = species_count,
+         labels = country,
+         parent = species_group) %>%
+  select(-esa_status)
+
+## Aggregate values by species group and assign each
+## species group its parent: "Animal"
+  
+species_group = countries %>%
+  group_by(parent) %>%
+  summarise(
+            counts = sum(counts)) %>%
+            
+  rename(labels = parent) %>%
+  mutate(parent = "Animal")
+
+## Aggregate all species_group values to get the Animal values
+## Animal has no parent element
+
+animal = data.frame(
+                   counts = sum(species_group$counts),
+                   labels = "Animal",
+                   parent = "")
+
+## Concatenate all tables in one
+treemap_df = rbind(countries, species_group, animal)
+
+# Number of animal per country
+treemap_country_final <- plot_ly(
+  type="treemap",
+  values=treemap_df$counts,
+  labels = treemap_df$labels,
+  parents= treemap_df$parent,
+  hoverinfo="value+percent parent+percent root"
+)
+treemap_country_final = treemap_country_final %>% plotly_build()
+treemap_country_final
+
+### It work but it has a weird set up and I can't figure out how to an extra layer (esa_status)
+
+```
+
+
+
+```{r}
+### treemap using plotly test#2 with Michael
+
+parent <- treemap_country_count %>% 
+  filter(esa_status == "Endangered") %>% 
+  pull(country) 
+
+label <- treemap_country_count %>% 
+  filter(esa_status == "Endangered") %>%
+  unite(species_group, c(country, species_group), sep = " ") %>% 
+  pull(species_group)
+ 
+label <- c(label, unique(parent)) 
+## create a new vector and rep() list or repeting strings lengh of unique countries
+parent <- c(parent, rep("",length(unique(parent))))
+
+plot_ly(
+  type="treemap",
+  labels = label,
+  parents= parent,
+  hoverinfo="value+percent parent+percent root"
+)
+```
+
+```{r}
+### Treemap country with 3 levels (country, species_group, esa_status)
+
+# Make the parent tree base (country)
+parent <- treemap_country_count %>%
+  select(country, species_group) %>% 
+  distinct() %>%
+  pull(country) 
+
+# Make the first level (species group in country)
+label <- treemap_country_count %>% 
+  select(country, species_group) %>% 
+  distinct() %>% 
+  unite(species_group, c(country, species_group), sep = "\n") %>% 
+  pull(species_group)
+
+# want one parent (country for each species_group) 
+label <- c(label, unique(parent)) 
+
+# create a new vector parent of parent country to englobe countries (rep() repeat strings lengh of unique countries and you can put whatever you want in it
+parent <- c(parent, rep("Species",length(unique(parent))))
+
+## Make a temporary label esa status
+label_temp <- treemap_country_count %>% 
+  unite(esa_status, c(esa_status, country, species_group), sep = "\n") %>% 
+  pull(esa_status)
+
+## Make a temporary parent status for species_group
+parent_temp <- treemap_country_count %>% 
+  unite(species_group, c(country, species_group), sep = "\n") %>% 
+  pull(species_group)
+
+# Incorporate them with previous label and parent
+label <- c(label_temp, label)
+parent <- c(parent_temp, parent)
+
+## Make a new temporary label for common_name
+label_temp <- ecos_treemap_country %>% 
+  unite(common_name, c(common_name,esa_status, country, species_group), sep = "\n") %>% 
+  pull(common_name)
+
+## Make a temporary parent esa_status for label common name
+parent_temp <- ecos_treemap_country %>% 
+  unite(esa_status, c(esa_status, country, species_group), sep = "\n") %>% 
+  pull(esa_status)
+
+# Incorporate them with previous label and parent
+label <- c(label_temp, label)
+parent <- c(parent_temp, parent)
+```
+
+```{r}
+## Make the treemap
+treemap_country <- plot_ly(
+  type="treemap",
+  labels = label,
+  parents= parent,
+  hoverinfo= paste("value+percent parent+percent root")
+)
+treemap_country
+```
+
+```{r}
+### save the interactive treemap_country for shiny
+saveRDS(treemap_country, '../plots/treemap_country.rds')
+```
+
+####
+#### Make Treemap for USA
+
+```{r}
+### Open file with states data USA
+ecos_treemap_usa <- read.csv("../data/ecos_states_us_clean.csv")
+```
+
+```{r}
+#Reduce the number of variables
+ecos_treemap_usa <- ecos_treemap_usa %>% 
+  select(common_name, esa_status, species_group, state)
+```
+
+```{r}
+# get a count of species per country and group species
+ecos_treemap_usa_count <- ecos_treemap_usa %>%
+  group_by(state, esa_status) %>% 
+  count(species_group, name = "species_count")
+```
+
+```{r}
+### save the file
+write.csv(ecos_treemap_usa_count, "../data/ecos_treemap_usa_count.csv", row.names = FALSE)
+write.csv(ecos_treemap_usa, "../data/treemap_usa_clean.csv", row.names = FALSE)
+```
+
+```{r}
+## Load dataset
+treemap_usa_count = read.csv('../data/ecos_treemap_usa_count.csv')
+treemap_usa = read.csv('../data/treemap_usa_clean.csv')
 ```
 
 
 ```{r}
-#Treemap test esa for fill color
-  ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
+### Treemap country with 3 levels (country, species_group, esa_status)
+
+# Make the parent tree base (country)
+parent <- treemap_usa_count %>%
+  select(state, species_group) %>% 
+  distinct() %>%
+  pull(state) 
+
+# Make the first level (species group in country)
+label <- treemap_usa_count %>% 
+  select(state, species_group) %>% 
+  distinct() %>% 
+  unite(species_group, c(state, species_group), sep = "\n") %>% 
+  pull(species_group)
+
+# want one parent (country for each species_group) 
+label <- c(label, unique(parent)) 
+
+# create a new vector parent of parent country to englobe countries (rep() repeat strings lengh of unique countries and you can put whatever you want in it
+parent <- c(parent, rep("Species",length(unique(parent))))
+
+## Make a temporary label esa status
+label_temp <- treemap_usa_count %>% 
+  unite(esa_status, c(esa_status, state, species_group), sep = "\n") %>% 
+  pull(esa_status)
+
+## Make a temporary parent status for species_group
+parent_temp <- treemap_usa_count %>% 
+  unite(species_group, c(state, species_group), sep = "\n") %>% 
+  pull(species_group)
+
+# Incorporate them with previous label and parent
+label <- c(label_temp, label)
+parent <- c(parent_temp, parent)
+
+## Make a new temporary label for common_name
+label_temp <- treemap_usa %>% 
+  unite(common_name, c(common_name,esa_status, state, species_group), sep = "\n") %>% 
+  pull(common_name)
+
+## Make a temporary parent esa_status for label common name
+parent_temp <- treemap_usa %>% 
+  unite(esa_status, c(esa_status, state, species_group), sep = "\n") %>% 
+  pull(esa_status)
+
+# Incorporate them with previous label and parent
+label <- c(label_temp, label)
+parent <- c(parent_temp, parent)
+```
+
+
+```{r}
+## Make the treemap USA
+treemap_usa_final <- plot_ly(
+  type="treemap",
+  labels = label,
+  parents= parent,
+  hoverinfo= paste("value+percent parent+percent root")
+)
+treemap_usa_final
+```
+
+```{r}
+### save the interactive treemap_usa for shiny
+treemap_usa_final = treemap_usa_final %>% plotly_build()
+saveRDS(treemap_usa_final, '../plots/treemap_usa.rds')
+```
+
+### Word cloud
+
+```{r}
+library(wordcloud)
+library(RColorBrewer)
+library(tidyverse)
+```
+
+```{r}
+ecos_cause <- ecos_species %>% 
+  select(cause) %>% 
+  filter (cause != "No information available")
+
+```
+
+```{r}
+write.csv(ecos_cause, "../data/ecos_cause.csv", row.names = FALSE)
+```
+
+```{r}
+ecos_cause1 = read.csv('../data/ecos_cause.csv')
+```
+
+
+```{r}
+library(tm)
+library(NLP)
+
+#Create a vector containing only the text
+text <- ecos_cause1$cause
+# Create a corpus  
+docs <- Corpus(VectorSource(text))
+```
+
+```{r}
+
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("english"))
+```
+```{r}
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm) 
+words <- sort(rowSums(matrix),decreasing=TRUE) 
+df <- data.frame(word = names(words),freq=words)
+```
+
+```{r}
+#set.seed(1234) # for reproducibility 
+#wordcloud(words = df$word, freq = df$freq, min.freq = 1,           max.words=200, random.order=FALSE, rot.per=0.35,            colors=brewer.pal(8, "Dark2"))
+```
+
+```{r}
+library(wordcloud2)
+wordcloud2(data=df, size=1.6, color='random-dark')
+```
+
+```{r}
+
+```
+
+
+
+
+
+
+
+```{r}
+#Treemap using matplotify
+
+p <- ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
   geom_treemap() +
   ggtitle("species group per country") +
   geom_treemap_subgroup_border() +
   geom_treemap_subgroup_text(place = "centre", grow = T) +
   geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
   scale_fill_brewer(palette = "Accent")
+fig <- ggplotly(p)
+fig
 ```
+
+
+```{r}
+ecos_treemap_count %>% 
+  filter(species_group == "Birds") %>% 
+  ggplot(aes(area = species_count, fill = esa_status, label = country) +
+  geom_treemap() +
+  ggtitle("species group per country") +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+  scale_fill_brewer(palette = "Accent"))
+```
+
+
+
 
 ```{r}
 #Treemap test species_group for fill color
@@ -160,22 +510,14 @@ write.csv(ecos_treemap_count, "../data/ecos_treemap_count.csv", row.names = FALS
   geom_treemap_subgroup_text(place = "centre", grow = T) +
   geom_treemap_text(colour = "white", place = "topleft", reflow = T) 
 ```
-```{r}
-### Open file with states data
-ecos_treemap_usa <- read.csv("../data/ecos_states_us_clean.csv")
-```
 
 ```{r}
-# get a count of species per state and group species
-ecos_treemap_usa_count <- ecos_treemap_usa %>%
-  group_by(esa_status, state) %>% 
-  count(species_group, name = "species_count")
+
 ```
 
-```{r}
-### save the file
-write.csv(ecos_treemap_usa_count, "../data/ecos_treemap_usa_count.csv", row.names = FALSE)
-```
+
+
+
 
 
 ```{r}
@@ -188,6 +530,8 @@ write.csv(ecos_treemap_usa_count, "../data/ecos_treemap_usa_count.csv", row.name
   geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
   scale_fill_brewer(palette = "RdBu")
 ```
+
+
 
 ### Try to make the cloud word
 

@@ -74,26 +74,36 @@ shinyServer(function(input, output) {
     addPolygons(color = "purple", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.2, fillColor = "purple")
 })
   
-  # Define server logic required to get the treemap countries
-  #makeReactiveBinding('country_treemap')
-  
-  output$country_treemap <- renderPlot({ 
-    ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
-      geom_treemap() +
-      ggtitle("Species group and status per country") +
-      geom_treemap_subgroup_border() +
-      geom_treemap_subgroup_text(place = "centre", grow = T) +
-      geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
-      scale_fill_brewer(palette = "PRGn")
-})
+
   # Define server logic required to get the treemap USA
-  output$USA_treemap <- renderPlot({
-    ggplot(ecos_treemap_usa_count, aes(area = species_count, fill = esa_status, label = state, subgroup = species_group)) +
-      geom_treemap() +
-      ggtitle("Species group and status per state in the United State") +
-      geom_treemap_subgroup_border() +
-      geom_treemap_subgroup_text(place = "centre", grow = T) +
-      geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
-      scale_fill_brewer(palette = "RdBu")
+  output$USA_treemap <- renderPlotly({
+    treemap_usa
   })
+  # Define server logic required to get the treemap countries
+  output$country_treemap <- renderPlotly({
+    treemap_country
+  })
+  
+  # Define server logic required to get the word_cloud
+  output$cause_words <- renderWordcloud2({
+  #Create a vector containing only the text
+  text <- ecos_cause$cause
+  # Create a corpus  
+  docs <- Corpus(VectorSource(text))
+  # Clean my text
+  docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+  docs <- tm_map(docs, content_transformer(tolower))
+  docs <- tm_map(docs, removeWords, stopwords("english"))
+  #Create a document-term-matrix
+  dtm <- TermDocumentMatrix(docs) 
+  matrix <- as.matrix(dtm) 
+  words <- sort(rowSums(matrix),decreasing=TRUE) 
+  df <- data.frame(word = names(words),freq=words)
+  #Plot
+  wordcloud2(data=df, size=1.6, color='random-dark')
+  })
+  
 })
