@@ -403,6 +403,31 @@ treemap_usa_final = treemap_usa_final %>% plotly_build()
 saveRDS(treemap_usa_final, '../plots/treemap_usa.rds')
 ```
 
+```{r}
+#Treemap using matplotify
+
+p <- ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
+  geom_treemap() +
+  ggtitle("species group per country") +
+  geom_treemap_subgroup_border() +
+  geom_treemap_subgroup_text(place = "centre", grow = T) +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
+  scale_fill_brewer(palette = "Accent")
+fig <- ggplotly(p)
+fig
+```
+
+```{r}
+#Treemap test species_group for fill color
+  ggplot(ecos_treemap_count, aes(area = species_count, fill = species_group, label = country, subgroup = esa_status)) +
+  geom_treemap() +
+  ggtitle("species group per country") +
+  geom_treemap_subgroup_border() +
+  geom_treemap_subgroup_text(place = "centre", grow = T) +
+  geom_treemap_text(colour = "white", place = "topleft", reflow = T) 
+```
+
+
 ### Word cloud
 
 ```{r}
@@ -463,79 +488,7 @@ library(wordcloud2)
 wordcloud2(data=df, size=1.6, color='random-dark')
 ```
 
-```{r}
-
-```
 
 
 
-
-
-
-
-```{r}
-#Treemap using matplotify
-
-p <- ggplot(ecos_treemap_count, aes(area = species_count, fill = esa_status, label = country, subgroup = species_group)) +
-  geom_treemap() +
-  ggtitle("species group per country") +
-  geom_treemap_subgroup_border() +
-  geom_treemap_subgroup_text(place = "centre", grow = T) +
-  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
-  scale_fill_brewer(palette = "Accent")
-fig <- ggplotly(p)
-fig
-```
-
-
-```{r}
-ecos_treemap_count %>% 
-  filter(species_group == "Birds") %>% 
-  ggplot(aes(area = species_count, fill = esa_status, label = country) +
-  geom_treemap() +
-  ggtitle("species group per country") +
-  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
-  scale_fill_brewer(palette = "Accent"))
-```
-
-
-
-
-```{r}
-#Treemap test species_group for fill color
-  ggplot(ecos_treemap_count, aes(area = species_count, fill = species_group, label = country, subgroup = esa_status)) +
-  geom_treemap() +
-  ggtitle("species group per country") +
-  geom_treemap_subgroup_border() +
-  geom_treemap_subgroup_text(place = "centre", grow = T) +
-  geom_treemap_text(colour = "white", place = "topleft", reflow = T) 
-```
-
-```{r}
-
-```
-
-
-
-
-
-
-```{r}
-#Treemap test 
-  ggplot(ecos_treemap_usa_count, aes(area = species_count, fill = esa_status, label = state, subgroup = species_group)) +
-  geom_treemap() +
-  ggtitle("ESA status and species group per US state") +
-  geom_treemap_subgroup_border() +
-  geom_treemap_subgroup_text(place = "centre", grow = T) +
-  geom_treemap_text(colour = "white", place = "topleft", reflow = T) +
-  scale_fill_brewer(palette = "RdBu")
-```
-
-
-
-### Try to make the cloud word
-
-```{r}
-
-```
 
