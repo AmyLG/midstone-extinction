@@ -38,12 +38,14 @@ shinyUI(
                           ),
                        box(width = NULL,
 
-                           "The goal of this project is to have specific information of species that are in danger of extinction, where they are localized and why they are endangered." 
+                           "The goal of this project is to have a general information of species that are in danger of extinction, where they are localized and why they are endangered." 
                            ,br(), br(),
-                           "The data selected is from ECOS(Environmental Council of the States) Api data."
+                           "The data is selected from ECOS (Environmental Council of the States) data."
                            ,br(), br(),
-                           "The ESA (Endangered Species Act) species status was simplified in 4 categories: species of concern, threatened, endangered and extinct."
-                       ),
+                           "The ESA (Endangered Species Act) species status was simplified into 4 categories: species of concern, threatened, endangered and extinction."
+                           ,br(), br(),
+                           "Project code: https://github.com/AmyLG/midstone-extinction"
+                           ),
                        )
                      ), #TabPanel1
             
@@ -154,7 +156,7 @@ shinyUI(
         ), #TabPanel3
         
         ### Panel for Cloud word
-        tabPanel("Cloud words",
+        tabPanel("Word cloud cause",
                  #Main page
                  fluidRow(
                    box(title = "Possible reasons concerning the endangered species", solidHeader = TRUE, background = "black",

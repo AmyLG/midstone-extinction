@@ -103,7 +103,7 @@ shinyServer(function(input, output) {
   words <- sort(rowSums(matrix),decreasing=TRUE) 
   df <- data.frame(word = names(words),freq=words)
   #Plot
-  wordcloud2(data=df, size=1.6, color='random-dark')
+  wordcloud2(data=df, size=1.6, color='random-light', backgroundColor="black")
   })
   
 })
