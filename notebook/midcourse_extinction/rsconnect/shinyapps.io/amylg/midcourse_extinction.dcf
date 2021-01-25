@@ -1,0 +1,12 @@
+name: midcourse_extinction
+title: midcourse_extinction
+username:
+account: amylg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3515440
+bundleId: 4138062
+url: https://amylg.shinyapps.io/midcourse_extinction/
+when: 1611531391.57369
+asMultiple: FALSE
+asStatic: FALSE
