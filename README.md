@@ -24,3 +24,7 @@ Third, it is sometimes difficult to get information on the species and understan
 First, find polygon data for species with missing polygon data in ecos from other sites.
 Second, include other databases to get more details about the species with missing information (aka cause).
 Third, I want to add information about effects (loss of some species can have a toll on biodiversity and chain reactions for example) and finally solutions to protect the endangered species.
+
+## Aknowledgement
+
+I want to especially thank my teachers and TA at Nashville Software School (NSS) for their time and advice: Michael Holloway, Tim Dobbins, Tingting Duan and Suneethi Sivakumaran.
